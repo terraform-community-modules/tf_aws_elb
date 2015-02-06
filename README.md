@@ -4,8 +4,8 @@ tf_aws_elb
 A Terraform module which contains a number of common configurations for AWS ELBs.
 * It assumes you're putting your backend instances for the ELBs in a VPC.
 
-Security Group Catalog
-----------------------
+ELB Catalog
+-----------
 
 This module contains the following ELB templates for you to use as modules in
 service Terraform templates.
