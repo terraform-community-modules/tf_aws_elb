@@ -1,6 +1,6 @@
-elb_external_https
+elb_https
 ==================
-A Terraform module for creating an external IP ELB with HTTPS
+A Terraform module for creating an ELB with HTTPS
 
 It makes the following assumptions in its design:
 * You have subnets in a VPC and that you want the ELB in two subnets,
@@ -10,12 +10,21 @@ It makes the following assumptions in its design:
 * Your instances behind the ELB will be in a VPC
 * It only configures a listener for HTTPS
 * It requires you've already uploaded an SSL certificate to EC2
-* You want cross zone load balancing enabled.
+
+It supports both (one or the other):
+- Internal IP ELBs
+- External IP ELBs
+
+It's recommended you use this with
+[sg_https_only](https://github.com/solarce/tf_aws_sg/tree/master/sg_https_only#sg_https_only-terraform-module)
 
 Input Variables
 ---------------
 
 - `elb_name` - The friendly name of the ELB
+- `elb_security_group` - The Security Group to associate with the ELB
+- `elb_is_internal` - Defaults to `false`, you can set to `true` to make
+   the ELB have an internal IP
 - `ssl_certificate_id` - The ARN of the SSL certificate
 - `subnet_az1` - The VPC subnet ID for AZ1
 - `subnet_az2` - The VPC subnet ID for AZ2
@@ -47,7 +56,7 @@ You can use these in your terraform template with the following steps.
 
 ```
 module "my_web_elb" {
-  source = "github.com/solarce/tf_aws_elb/elb_external_https"
+  source = "github.com/solarce/tf_aws_elb/elb_https"
   elb_name = "${var.elb_name}"
   subnet_az1 = "${var.subnet_az1}"
   subnet_az2 = "${var.subnet_az2}"

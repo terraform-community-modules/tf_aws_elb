@@ -1,10 +1,18 @@
 //
-// Module: tf_aws_elb/elb_external_https
+// Module: tf_aws_elb/elb_https
 //
 
 // Module specific variables
 
 variable "elb_name" {}
+
+variable "elb_is_internal" {
+  description = "Determines if the ELB is internal or not"
+  default = false
+  // Defaults to false, which results in an external IP for the ELB
+}
+
+variable "elb_security_group" {}
 
 // See README.md for details on finding the
 // ARN of an SSL certificate in EC2
