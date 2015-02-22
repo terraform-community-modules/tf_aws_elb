@@ -19,3 +19,13 @@ Usage
 
 - See individual module README's for Usage examples.
 
+Authors
+=======
+
+Created and maintained by [Brandon Burton](https://github.com/solarce)
+(brandon@inatree.org).
+
+License
+=======
+
+Apache 2 Licensed. See LICENSE for full details.
