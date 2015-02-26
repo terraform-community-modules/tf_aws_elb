@@ -1,6 +1,6 @@
-elb_https
+elb_http
 ==================
-A Terraform module for creating an ELB with HTTPS
+A Terraform module for creating an ELB with just HTTP support
 
 It makes the following assumptions in its design:
 * You have subnets in a VPC and that you want the ELB in two subnets,
@@ -16,7 +16,7 @@ It supports both (one or the other):
 - External IP ELBs
 
 It's recommended you use this with
-[sg_https_only](https://github.com/terraform-community-modules/tf_aws_sg/tree/master/sg_https_only#sg_https_only-terraform-module)
+[sg_web](https://github.com/terraform-community-module/tf_aws_sg/tree/master/sg_web)
 
 Input Variables
 ---------------
@@ -25,7 +25,6 @@ Input Variables
 - `elb_security_group` - The Security Group to associate with the ELB
 - `elb_is_internal` - Defaults to `false`, you can set to `true` to make
    the ELB have an internal IP
-- `ssl_certificate_id` - The ARN of the SSL certificate
 - `subnet_az1` - The VPC subnet ID for AZ1
 - `subnet_az2` - The VPC subnet ID for AZ2
 - `backend_port` - The port the service running on the EC2 insances
@@ -62,7 +61,6 @@ module "my_web_elb" {
   subnet_az2 = "${var.subnet_az2}"
   backend_port = "${var.backend_port}"
   backend_protocol = "${var.backend_protocol}"
-  ssl_certificate_id = "${var.ssl_certificate_id}"
   health_check_target = "${var.health_check_target}"
   aws_access_key = "${var.aws_access_key}"
   aws_secret_key = "${var.aws_secret_key}"
@@ -80,5 +78,4 @@ module "my_web_elb" {
 - subnet_az2
 - backend_port
 - backend_protocol
-- ssl_certificate_id
 - health_check_target
