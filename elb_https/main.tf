@@ -37,4 +37,7 @@ resource "aws_elb" "elb" {
   }
 
   cross_zone_load_balancing = true
+  idle_timeout = "${var.idle_timeout}"
+  connection_draining = true
+  connection_draining_timeout = "${var.connection_draining_timeout}"
 }
