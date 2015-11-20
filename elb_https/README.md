@@ -11,6 +11,7 @@ It makes the following assumptions in its design:
 * It only configures a listener for HTTPS
 * It requires you've already uploaded an SSL certificate to EC2
 * Cross Zone Load Balancing is enabled
+* Connection Draining is enabled
 
 It supports both (one or the other):
 - Internal IP ELBs

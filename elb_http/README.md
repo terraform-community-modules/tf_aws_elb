@@ -10,6 +10,7 @@ It makes the following assumptions in its design:
 * Your instances behind the ELB will be in a VPC
 * It only configures a listener for HTTP
 * Cross Zone Load Balancing is enabled
+* Connection Draining is enabled
 
 It supports both (one or the other):
 - Internal IP ELBs
