@@ -8,8 +8,8 @@ It makes the following assumptions in its design:
 * You'll build all your instances with an Auto-Scaling Group (ASG)
   and you'll use the ASG to associate your instances with the ELB.
 * Your instances behind the ELB will be in a VPC
-* It only configures a listener for HTTPS
-* It requires you've already uploaded an SSL certificate to EC2
+* It only configures a listener for HTTP
+* Cross Zone Load Balancing is enabled
 
 It supports both (one or the other):
 - Internal IP ELBs
@@ -38,6 +38,10 @@ Input Variables
     - ssl (secure tcp)
 - `health_check_target` - The URL that the ELB should use for health
     checks, e.g. `HTTPS:443/health`
+- `idle_timeout` - The time in seconds that the connection is allowed to be
+    idle. (default: 60)
+- `connection_draining_timeout` - The time in seconds to allow for connections
+    to drain. (default: 300)
 
 Outputs
 ------
@@ -79,3 +83,5 @@ module "my_web_elb" {
 - backend_port
 - backend_protocol
 - health_check_target
+- idle_timeout
+- connection_draining_timeout
