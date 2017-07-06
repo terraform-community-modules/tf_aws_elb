@@ -35,6 +35,19 @@ variable "backend_protocol" {
  // - ssl (secure tcp)
 }
 
+variable "frontend_port" {
+  description = "The port the service on the EC2 instances listens on"
+}
+
+variable "frontend_protocol" {
+ description = "The protocol the backend service speaks"
+ // Possible options are
+ // - http
+ // - https
+ // - tcp
+ // - ssl (secure tcp)
+}
+
 variable "health_check_target" {
   description = "The URL the ELB should use for health checks"
   // This is primarily used with `http` or `https` backend protocols

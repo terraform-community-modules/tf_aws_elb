@@ -27,9 +27,9 @@ Input Variables
    the ELB have an internal IP
 - `subnet_az1` - The VPC subnet ID for AZ1
 - `subnet_az2` - The VPC subnet ID for AZ2
-- `backend_port` - The port the service running on the EC2 insances
+- `(frontend_port | backend_port)` - The port the service running on/off the EC2 insances
     will listen on.
-- `backend_protocol` - The protocol the service on the backend_port
+- `(frontend_port | backend_protocol)` - The protocol the service on the frontend_port/backend_port
     understands, e.g. `http` 
     - The possible options are:
     - http
