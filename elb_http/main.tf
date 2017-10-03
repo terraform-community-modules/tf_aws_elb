@@ -23,8 +23,8 @@ resource "aws_elb" "elb" {
   listener {
     instance_port = "${var.backend_port}"
     instance_protocol = "${var.backend_protocol}"
-    lb_port = 80
-    lb_protocol = "http"
+    lb_port = "${var.frontend_port}"
+    lb_protocol = "${var.frontend_protocol}"
   }
 
   health_check {
