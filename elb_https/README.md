@@ -10,6 +10,8 @@ It makes the following assumptions in its design:
 * Your instances behind the ELB will be in a VPC
 * It only configures a listener for HTTPS
 * It requires you've already uploaded an SSL certificate to EC2
+* Cross Zone Load Balancing is enabled
+* Connection Draining is enabled
 
 It supports both (one or the other):
 - Internal IP ELBs
@@ -25,6 +27,8 @@ Input Variables
 - `elb_security_group` - The Security Group to associate with the ELB
 - `elb_is_internal` - Defaults to `false`, you can set to `true` to make
    the ELB have an internal IP
+- `idle_timeout` - (Optional) 
+- `connection_draining_timeout` - (Optional)
 - `ssl_certificate_id` - The ARN of the SSL certificate
 - `subnet_az1` - The VPC subnet ID for AZ1
 - `subnet_az2` - The VPC subnet ID for AZ2
@@ -39,6 +43,10 @@ Input Variables
     - ssl (secure tcp)
 - `health_check_target` - The URL that the ELB should use for health
     checks, e.g. `HTTPS:443/health`
+- `idle_timeout` - The time in seconds that the connection is allowed to be
+    idle. (default: 60)
+- `connection_draining_timeout` - The time in seconds to allow for connections
+    to drain. (default: 300)
 
 Outputs
 ------
@@ -82,3 +90,5 @@ module "my_web_elb" {
 - backend_protocol
 - ssl_certificate_id
 - health_check_target
+- idle_timeout
+- connection_draining_timeout

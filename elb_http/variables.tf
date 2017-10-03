@@ -14,6 +14,16 @@ variable "elb_is_internal" {
 
 variable "elb_security_group" {}
 
+variable "idle_timeout" {
+  description = "The time in seconds that the connection is allowed to be idle."
+  default = 60
+}
+
+variable "connection_draining_timeout" {
+  description = "The time in seconds to allow for connections to drain."
+  default = 300
+}
+
 variable "subnet_az1" {
   description = "The subnet for AZ1"
 }
